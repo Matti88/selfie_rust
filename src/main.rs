@@ -1,29 +1,16 @@
-//! # Builder Basics Sample
-//!
-//! This sample demonstrates how to use the builder with an imported glade file
+// A selfie with OpenCV in Rust
+//
+//
 
-// BELOW the smippest of READ fuction
-  // pub fn read(&mut self, image:& ::core::Mat) -> Result<bool,String> {
-  //   unsafe {
-  //     let rv = ::sys::cv_highgui_cv_VideoCapture_read_Mat_image(self.as_raw_VideoCapture(), image.as_raw_Mat());
-  //     if rv.error_msg as i32 != 0i32 {
-  //         let v = CStr::from_ptr(rv.error_msg).to_bytes().to_vec();
-  //         ::libc::free(rv.error_msg as *mut c_void);
-  //         return Err(String::from_utf8(v).unwrap())
-  //     }
-  //     Ok(rv.result)
-  //   }
-  // }
 
 extern crate opencv;
 
 use opencv::highgui;
 use opencv::core;
-//use std::fs::File;
-//use std::io::prelude::*;
 
 
-
+// Function takes a picture and save the image as "/tmp/test.jpg"
+// the function will print 
 fn cameracapture()  -> Result<bool, String> {
 
     let window = "/tmp/test.jpg";
@@ -38,16 +25,11 @@ fn cameracapture()  -> Result<bool, String> {
     let mut frame = try!(core::Mat::new());	
     let resutlofinterogation = try!(cam.read(&mut frame));
     let result = opencv::highgui::imwrite(window, &mut frame , &mut values).unwrap();
-    println!("{:?}", result);
+    println!("True if the operations were succesful: {:?}", result);
      Ok(resutlofinterogation)
      
-			}
+}
 
 fn main(){
-
-
-
     println!("{:?}", cameracapture().unwrap());
-
-	
 }
