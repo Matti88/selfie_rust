@@ -2,15 +2,13 @@
 //
 //
 
-
 extern crate opencv;
 
 use opencv::highgui;
 use opencv::core;
 
-
-// Function takes a picture and save the image as "/tmp/test.jpg"
-// the function will print 
+// Function takes a picture and save the image at "/tmp/test.jpg"
+// the function will print true is the camera actually captured a picture
 fn cameracapture()  -> Result<bool, String> {
 
     let window = "/tmp/test.jpg";
